@@ -5,15 +5,13 @@ restobar-analytics-portfolio/
 ├── requirements.txt
 ├── .gitignore                          ← incluye /data/*.csv
 ├── data_prep/
-│   └── 01_data_cleaning.ipynb          ← desde "Importar el archivo" hasta
-│                                           anonimización de meseros (con el
-│                                           reordenamiento del punto 2)
+│   └── 01_data_cleaning.ipynb          ← 
 ├── analysis/
-│   └── 02_business_analysis.ipynb      ← desde "Metricas" hasta el hallazgo
-│                                           7 (pedidos sin registrar) —
-│                                           básicamente tu Fase 1 completa
+│   └── 02_business_analysis.ipynb      ← básicamente Fin de Fase 1 
+│                                           
+│                                           
 ├── market_basket/
-│   └── 03_market_basket_analysis.ipynb ← nuevo, lo armamos juntas
+│   └── 03_market_basket_analysis.ipynb 
 └── img/
     ├── ingresototal_vs_ingresonocheoperada.png
     └── pedidos_vs_ticket.png
