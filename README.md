@@ -18,3 +18,4 @@ restobar-analytics-portfolio/
     ├── ingresototal_vs_ingresonocheoperada.png
     └── pedidos_vs_ticket.png
 ```
+
