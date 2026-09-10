@@ -1,14 +1,20 @@
 # Restobar Analytics Portfolio
 ```
 restobar-analytics-portfolio/
-├── README.md                      ← case study: problema → datos → enfoque → resultado
+├── README.md
 ├── requirements.txt
-├── .gitignore                     ← incluye /data (dato crudo nunca sube)
+├── .gitignore                          ← incluye /data/*.csv
 ├── data_prep/
-│   └── 01_data_cleaning.ipynb     ← tu notebook de limpieza (fecha de negocio, meseros, nulos)
+│   └── 01_data_cleaning.ipynb          ← desde "Importar el archivo" hasta
+│                                           anonimización de meseros (con el
+│                                           reordenamiento del punto 2)
 ├── analysis/
-│   └── 02_market_basket_analysis.ipynb   ← reglas de asociación (Apriori/FP-Growth)
+│   └── 02_business_analysis.ipynb      ← desde "Metricas" hasta el hallazgo
+│                                           7 (pedidos sin registrar) —
+│                                           básicamente tu Fase 1 completa
+├── market_basket/
+│   └── 03_market_basket_analysis.ipynb ← nuevo, lo armamos juntas
 └── img/
-    ├── evolucion_ingresos.png
-    └── reglas_asociacion.png       ← visualización de las combinaciones más frecuentes
+    ├── ingresototal_vs_ingresonocheoperada.png
+    └── pedidos_vs_ticket.png
 ```
