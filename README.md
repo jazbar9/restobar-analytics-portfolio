@@ -27,10 +27,10 @@ restobar-analytics-portfolio/
     └── pedidos_vs_ticket.png
 ```
 
-
+```
 Información extra:
-data_prep/ → limpieza y preparación de datos (01_data_cleaning.ipynb)
-analysis/ → análisis de negocio, Fase 1 (02_business_analysis.ipynb)
-market_basket/ → reglas de asociación de productos (03_market_basket_analysis.ipynb)
-img/ → gráficos generados
-
+├─data_prep/ → limpieza y preparación de datos (01_data_cleaning.ipynb)
+├─analysis/ → análisis de negocio, Fase 1 (02_business_analysis.ipynb)
+├─market_basket/ → reglas de asociación de productos (03_market_basket_analysis.ipynb)
+└─img/ → gráficos generados
+```
