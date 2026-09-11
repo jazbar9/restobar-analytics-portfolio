@@ -132,7 +132,7 @@ periodo reciente. Sin datos de inversión y alcance de campañas, esto se
 presenta como hipótesis cualitativa, no como relación causal comprobada.
 
 **5. Top 5 productos por ingreso neto:**
-
+```
 | Producto | Ingreso Neto (S/.) |
 |---|---|
 | Pilsen | 113,730 |
@@ -140,9 +140,10 @@ presenta como hipótesis cualitativa, no como relación causal comprobada.
 | Cuzqueña Trigo | 83,340 |
 | Cartavio Black | 65,631 |
 | Jarra Pomalca Rubio | 51,660 |
+```
 
 **6. Desempeño por mesero (top 10 por ticket promedio, mín. 10 pedidos):**
-
+```
 | Mesero | Pedidos Únicos | Ticket Promedio (S/.) |
 |---|---|---|
 | Mesero_1 | 11 | 56.00 |
@@ -155,7 +156,7 @@ presenta como hipótesis cualitativa, no como relación causal comprobada.
 | Mesero_7 | 62 | 46.55 |
 | Mesero_8 | 49 | 44.49 |
 | Mesero_9 | 177 | 43.69 |
-
+```
 **7. Pedidos sin registrar:** los 745 pedidos categorizados como "Sin
 registrar" arrojaron un ticket promedio de S/ 47.96, dentro del rango de
 ticket promedio observado en el resto del personal (S/ 43.69-56.00). Esto
@@ -167,8 +168,35 @@ decidió implementar una política más estricta de registro obligatorio —
 un ejemplo concreto de cómo este análisis generó una acción operativa
 real.
 
-## Market Basket Analysis
-*(sección a completar con los hallazgos del notebook 03_market_basket_analysis.ipynb)*
+## Market Basket Analysis (Machine Learning)
+**Nota metodológica importante:** el sistema POS genera un "pedido" (ticket)
+por cada ronda de consumo, no por mesa ni por visita completa. Una misma
+mesa puede generar varios pedidos independientes a lo largo de una noche
+(ej. una ronda de bebidas, y horas después otra). Esto significa que el
+análisis identifica productos que se piden juntos *en un mismo momento*,
+no el patrón de consumo completo de un cliente durante toda su visita.
+
+Esto se confirma en los datos: el 87% de los pedidos (39,209 de 45,068)
+contienen un solo producto, con un promedio de 1.15 productos por pedido.
+Bajo esta estructura, es esperable encontrar pocas combinaciones
+frecuentes de 2+ productos — no es una limitación del algoritmo, sino de
+la unidad de análisis disponible.
+
+Aun así, se encontraron dos asociaciones con soporte estadístico (Apriori,
+min_support=0.003, lift ≥ 1.0):
+
+- **Inca Kola → Pilsen** (confianza 26.9%, lift 2.14): los pedidos que
+  incluyen Inca Kola tienen más del doble de probabilidad de incluir
+  también una Pilsen, comparado con el promedio general — es un posible patrón
+  de consumo mixto alcohol/no-alcohol dentro de un mismo grupo.
+- **Cuzqueña Trigo ↔ Cuzqueña Malta** (lift 1.38): asociación moderada,
+  consistente con clientes explorando variantes de una misma marca.
+
+**Recomendación para el negocio:** un análisis de combos más preciso
+orientado a "qué se consume por mesa en una visita completa" requeriría
+que el sistema POS capture un identificador de mesa que agrupe los
+pedidos de una misma sesión de consumo — la cual es una mejora concreta derivada de
+este análisis.
 
 ## Limitaciones del dataset
 - No hay identificador de cliente, por lo que no es posible analizar
@@ -181,28 +209,31 @@ real.
   es posible relacionar ingresos con rentabilidad real.
 
 ## Impacto
-Este análisis generó tres acciones concretas en el negocio:
+Este análisis generó las siguientes acciones y recomendaciones concretas:
 
 - **Registro de personal:** al dimensionar que 745 pedidos (~0.8% del
   total) carecían de mesero registrado por fallas de captura, el negocio
   implementó una política de registro obligatorio en el sistema POS.
-- **Estrategia de productos:** al identificar los productos más vendidos
-  por ingreso, se recomendó explorar combos que integren estos productos
-  de alta rotación junto con productos de comida o de menor venta, como
-  estrategia para impulsar el consumo cruzado — hipótesis que se pone a
-  prueba de forma más rigurosa en la sección de Market Basket Analysis.
 - **Revisión de percepción sobre el desempeño del personal:** el dueño
   percibía a un par de meseros como los más destacados del equipo; los
   datos mostraron que, si bien su ticket promedio por pedido era alto, su
   volumen de pedidos atendidos era menor que el del resto del personal —
   evidenciando que la percepción y el desempeño medido en datos no
   siempre coinciden.
-
-## Próximos pasos
+- **Estrategia de combos — hipótesis refutada con evidencia:** la
+  hipótesis inicial de impulsar combos entre productos top y de menor
+  venta no se sostuvo con los datos: el 87% de los pedidos contiene un
+  solo producto, indicando que el consumo real ocurre en rondas
+  sucesivas por mesa, no en pedidos combinados. Esto derivó en una
+  recomendación de mejora al sistema POS: capturar un identificador de
+  mesa para poder analizar el consumo completo de una visita, no solo de
+  cada ronda individual.
+  
+## Próximos pasos (Fase 2)
 Cruzar el gasto y alcance semanal de campañas de Meta Ads con los pedidos
 por noche, para evaluar si la correlación observada entre publicidad y
 afluencia se sostiene con datos de marketing reales (fuera del alcance de
-este repositorio).
+este repositorio) en la Fase 2 de este análisis.
 
 ## Herramientas
 Python (pandas, matplotlib, seaborn, mlxtend), Google Colab.
