@@ -1,8 +1,8 @@
-# Análisis de Ventas — Restobar (Data Pipeline + Market Basket Analysis)
+# Análisis de Ventas — Negocio Retail (Data Pipeline + Market Basket Analysis)
 
 ## Resumen del proyecto
 Pipeline de datos y análisis de negocio sobre transacciones reales de un
-restaurante bar (nombre omitido por confidencialidad), desde la exportación cruda
+negocio (nombre omitido por confidencialidad), desde la exportación cruda
 del sistema de punto de venta hasta hallazgos accionables que ya generaron
 decisiones reales en el negocio. Incluye un componente de machine learning
 (market basket analysis) para identificar qué productos se piden juntos.
@@ -10,7 +10,7 @@ decisiones reales en el negocio. Incluye un componente de machine learning
 ## Estructura del repositorio
 
 ```
-restobar-analytics-portfolio/
+pointofsale-retail-analytics/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore                          
@@ -36,9 +36,9 @@ Información extra:
 ```
 
 ## Contexto del proyecto
-Análisis de datos transaccionales reales de un restaurant bar (nombre omitido por
+Análisis de datos transaccionales reales de un negocio retail (nombre omitido por
 confidencialidad del negocio), operando viernes, sábado y domingo desde
-2022. Los datos provienen del sistema de punto de venta interno (WePOS), exportados como historial de pedidos ítem por ítem.
+2022. Los datos provienen del sistema de punto de venta interno (Point Of Sale), exportados como historial de pedidos ítem por ítem.
 
 **Nota sobre privacidad:** el dataset original no se incluye en este
 repositorio por decisión del negocio. Este README documenta el proceso
@@ -214,7 +214,7 @@ Este análisis generó las siguientes acciones y recomendaciones concretas:
 - **Registro de personal:** al dimensionar que 745 pedidos (~0.8% del
   total) carecían de mesero registrado por fallas de captura, el negocio
   implementó una política de registro obligatorio en el sistema POS.
-- **Revisión de percepción sobre el desempeño del personal:** el dueño
+- **Revisión de percepción sobre el desempeño del personal:** el administrador
   percibía a un par de meseros como los más destacados del equipo; los
   datos mostraron que, si bien su ticket promedio por pedido era alto, su
   volumen de pedidos atendidos era menor que el del resto del personal —
@@ -228,7 +228,7 @@ Este análisis generó las siguientes acciones y recomendaciones concretas:
   recomendación de mejora al sistema POS: capturar un identificador de
   mesa para poder analizar el consumo completo de una visita, no solo de
   cada ronda individual.
-  
+
 ## Próximos pasos (Fase 2)
 Cruzar el gasto y alcance semanal de campañas de Meta Ads con los pedidos
 por noche, para evaluar si la correlación observada entre publicidad y
